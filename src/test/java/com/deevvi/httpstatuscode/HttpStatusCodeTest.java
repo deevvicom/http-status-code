@@ -1,7 +1,8 @@
 package com.deevvi.httpstatuscode;
 
-import org.junit.Assert;
 import org.junit.Test;
+
+import static com.google.common.truth.Truth.assertThat;
 
 /**
  * Tests for {@link HttpStatusCode} class.
@@ -23,15 +24,15 @@ public class HttpStatusCodeTest {
         HttpStatusCode statusCode = HttpStatusCode.resolve(100);
         statusCode.isSuccessful();
         //verify
-        Assert.assertEquals("Continue", code.getName());
-        Assert.assertEquals(HttpStatusSource.RFC_7231, code.getSource());
-        Assert.assertTrue(code.isOfficial());
-        Assert.assertTrue(code.isInformational());
+        assertThat(code.getName()).isEqualTo("Continue");
+        assertThat(code.getSource()).isEqualTo(HttpStatusSource.RFC_7231);
+        assertThat(code.isOfficial()).isTrue();
+        assertThat(code.isInformational()).isTrue();
     }
 
     @Test
     public void testInvalidValue() {
 
-        Assert.assertFalse(HttpStatusCode.isValidValue(999));
+        assertThat(HttpStatusCode.isValidValue(999)).isFalse();
     }
 }

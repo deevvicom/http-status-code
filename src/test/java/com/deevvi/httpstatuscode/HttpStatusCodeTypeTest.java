@@ -3,6 +3,8 @@ package com.deevvi.httpstatuscode;
 import org.junit.Assert;
 import org.junit.Test;
 
+import static com.google.common.truth.Truth.assertThat;
+
 /**
  * Tests for {@link HttpStatusCodeType} class.
  */
@@ -22,10 +24,10 @@ public class HttpStatusCodeTypeTest {
         HttpStatusCodeType type = HttpStatusCodeType.resolve(100);
 
         //verify
-        Assert.assertNotNull(type);
-        Assert.assertEquals(type, HttpStatusCodeType.INFORMATIONAL);
-        Assert.assertTrue(type.isInformational());
-        Assert.assertFalse(type.isServerError());
+        assertThat(type).isNotNull();
+        assertThat(type).isEqualTo(HttpStatusCodeType.INFORMATIONAL);
+        assertThat(type.isInformational()).isTrue();
+        assertThat(type.isServerError()).isTrue();
     }
 
     @Test
@@ -35,8 +37,8 @@ public class HttpStatusCodeTypeTest {
         HttpStatusCodeType type = HttpStatusCodeType.resolve(201);
 
         //verify
-        Assert.assertNotNull(type);
-        Assert.assertTrue(type.isSuccessful());
+        assertThat(type).isNotNull();
+        assertThat(type.isSuccessful()).isTrue();
     }
 
     @Test
@@ -46,8 +48,8 @@ public class HttpStatusCodeTypeTest {
         HttpStatusCodeType type = HttpStatusCodeType.resolve(302);
 
         //verify
-        Assert.assertNotNull(type);
-        Assert.assertTrue(type.isRedirect());
+        assertThat(type).isNotNull();
+        assertThat(type.isRedirect()).isTrue();
     }
 
     @Test
@@ -57,8 +59,9 @@ public class HttpStatusCodeTypeTest {
         HttpStatusCodeType type = HttpStatusCodeType.resolve(404);
 
         //verify
-        Assert.assertNotNull(type);
-        Assert.assertTrue(type.isClientError());
+        assertThat(type).isNotNull();
+        assertThat(type.isClientError()).isTrue();
+        assertThat(type.isRedirect()).isFalse();
     }
 
     @Test
@@ -68,8 +71,8 @@ public class HttpStatusCodeTypeTest {
         HttpStatusCodeType type = HttpStatusCodeType.resolve(502);
 
         //verify
-        Assert.assertNotNull(type);
-        Assert.assertTrue(type.isServerError());
+        assertThat(type).isNotNull();
+        assertThat(type.isServerError()).isTrue();
     }
 
     @Test
@@ -79,8 +82,8 @@ public class HttpStatusCodeTypeTest {
         HttpStatusCodeType type = HttpStatusCodeType.resolve(1016);
 
         //verify
-        Assert.assertNotNull(type);
-        Assert.assertTrue(type.isServerError());
+        assertThat(type).isNotNull();
+        assertThat(type.isServerError()).isTrue();
     }
 
     @Test(expected = IllegalArgumentException.class)
