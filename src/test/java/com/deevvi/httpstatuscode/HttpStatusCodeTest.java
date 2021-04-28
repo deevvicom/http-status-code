@@ -1,6 +1,7 @@
 package com.deevvi.httpstatuscode;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -9,11 +10,11 @@ import static com.google.common.truth.Truth.assertThat;
  */
 public class HttpStatusCodeTest {
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testInvalidCode() {
 
         //call
-        HttpStatusCode.resolve(30);
+        Assertions.assertThrows(IllegalArgumentException.class, () -> HttpStatusCode.resolve(30));
     }
 
     @Test

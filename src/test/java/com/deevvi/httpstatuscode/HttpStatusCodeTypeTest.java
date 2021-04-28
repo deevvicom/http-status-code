@@ -1,7 +1,7 @@
 package com.deevvi.httpstatuscode;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -10,11 +10,11 @@ import static com.google.common.truth.Truth.assertThat;
  */
 public class HttpStatusCodeTypeTest {
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testInvalidValue() {
 
         //call
-        HttpStatusCodeType.resolve(20);
+        Assertions.assertThrows(IllegalArgumentException.class, () -> HttpStatusCodeType.resolve(20));
     }
 
     @Test
@@ -27,7 +27,7 @@ public class HttpStatusCodeTypeTest {
         assertThat(type).isNotNull();
         assertThat(type).isEqualTo(HttpStatusCodeType.INFORMATIONAL);
         assertThat(type.isInformational()).isTrue();
-        assertThat(type.isServerError()).isTrue();
+        assertThat(type.isServerError()).isFalse();
     }
 
     @Test
@@ -86,11 +86,11 @@ public class HttpStatusCodeTypeTest {
         assertThat(type.isServerError()).isTrue();
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testInvalidErrors() {
 
         //call
-        HttpStatusCodeType.resolve(333);
+        Assertions.assertThrows(IllegalArgumentException.class, () ->  HttpStatusCodeType.resolve(333));
     }
 
 }

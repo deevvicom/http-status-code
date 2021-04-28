@@ -16,19 +16,19 @@ The recommended way to use this library is through your build tool.
 
 The http-status-code artifact is published to Maven Central, using the group `com.deevvi`.
 
-Latest stable version is `1.0.0`.
+Latest stable version is `1.1.0`.
 
 Therefore,it can be added to your Gradle project by adding the dependencies:
 
 ```
-compile "com.deevvi:http-status-code:1.0.0"
+compile "com.deevvi:http-status-code:1.1.0"
 ```
 and in Maven:
 ```
 <dependency>
     <groupId>com.deevvi</groupId>
     <artifactId>http-status-code</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
 </dependency>
 ```
 
